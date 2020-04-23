@@ -7,10 +7,12 @@ const { repair } = require('./enhancer.js');
 describe('enhancer.js', () => {
   describe('.repair()', () => {
     const weapon = {
+      name: 'weapon',
       durability: 80,
+      enchantment: 0,
     };
     it('should return an item with 100 durability', () => {
-      expect(repair(weapon)).toEqual({ durability: 100 });
+      expect(repair(weapon)).toEqual({ ...weapon, durability: 100 });
     });
   });
 });
