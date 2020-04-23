@@ -2,7 +2,6 @@ module.exports = {
   succeed,
   fail,
   repair,
-  get,
 };
 
 function repair(item) {
@@ -19,11 +18,20 @@ function succeed(item) {
 }
 
 function fail(item) {
-  return { ...item };
-}
-
-function get(item) {
-  return { ...item };
+  if (item.enchantment > 0 && item.enchantment < 15) {
+    // decrease durability 5
+    item.durability -= 5;
+    return { ...item };
+  } else if (item.enchantment === 15) {
+    item.durability -= 10;
+    return { ...item };
+  } else if (item.enchantment >= 16 && item.enchantment <= 19) {
+    item.durability -= 10;
+    item.enchantment -= 1;
+    return { ...item };
+  } else {
+    return { ...item };
+  }
 }
 
 /* 
