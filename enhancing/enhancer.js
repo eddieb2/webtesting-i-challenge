@@ -10,7 +10,12 @@ function repair(item) {
 }
 
 function succeed(item) {
-  return { ...item };
+  if (item.enchantment === 20) {
+    return { ...item };
+  } else {
+    item.enchantment += 1;
+    return { ...item };
+  }
 }
 
 function fail(item) {
